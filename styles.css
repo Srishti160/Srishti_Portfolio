@@ -1,0 +1,328 @@
+/* Reset & Base setup */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body, html {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #030308;
+  color: #ffffff;
+}
+
+/* 3D Canvas Background Layer */
+#webgl-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* Main Overlay Layer */
+.ui-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.interactive {
+  pointer-events: auto !important;
+}
+
+/* ==========================================================================
+   HEADER NAVBAR STYLES
+   ========================================================================== */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 4rem;
+  background: rgba(3, 3, 12, 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+  pointer-events: auto !important;
+}
+
+.logo a {
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.logo a span {
+  color: #86f7ff;
+}
+
+.logo a:hover {
+  color: #b2faff;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  margin-left: 80px ;
+  list-style: none;
+}
+
+.nav-links a {
+  color: #94a3b8;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-transform: none;
+  position: relative;
+  padding: 0.25rem 0;
+  transition: color 0.3s ease;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: #8df4fc;
+  box-shadow: 0 0 10px hwb(184 59% 0%);
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #ffffff;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.header-socials {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.header-socials a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #cbd5e1;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.header-socials a:hover {
+  color: #030308;
+  background: #a9f9ff;
+  border-color: #99f8ff;
+  box-shadow: 0 0 15px rgba(179, 250, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   CENTER SPLIT SECTION STYLES
+   ========================================================================== */
+.split-container {
+  flex: 1;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 4rem;
+  position: relative;
+  overflow: hidden;
+  pointer-events: auto !important;
+}
+
+/* Hero Titles */
+.side-text h1 {
+  font-size: 3.2rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  background: linear-gradient(135deg, #ffffff 0%, #94a3b8 100%);
+  transition: text-shadow 0.3s ease, color 0.3s ease;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.5rem;
+}
+
+.side-text {
+  max-width: 320px;
+  z-index: 20;
+  cursor: pointer;
+  pointer-events: auto !important;
+  background: transparent !important; /* Ensures space canvas is fully visible */
+  border: none !important;
+  padding: 0 !important;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+/* Paragraph styling with subtle dark drop-shadow for sharp readability over stars */
+.side-text p {
+  color: #cbd5e1;
+  font-size: 1rem;
+  line-height: 1.6;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9), 0 0 2px rgba(0, 0, 0, 1);
+}
+
+
+/* Center Image Wrapper - TRANSPARENT BASE */
+.image-wrapper {
+  position: relative;
+  width: 480px; 
+  height: 600px;
+  border-radius: 20px;
+  pointer-events: auto !important;
+  background: transparent !important; /* Fully transparent so space canvas is visible */
+  /* Adds a smooth glowing dark vignette around the card */
+  box-shadow: 
+    0 20px 50px rgba(0, 0, 0, 0.8),
+    0 0 40px rgba(0, 240, 255, 0.1); 
+  /* Smooth drop-off at edges */
+  overflow: hidden; 
+}
+
+/* Clipped Container for Left Images */
+.left-clip-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  border-radius: 16px;
+  overflow: hidden;
+  pointer-events: none;
+  clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
+  background: transparent !important; /* Fully transparent */
+}
+/* Center Image Wrapper - Fully Transparent Base */
+.image-wrapper {
+  position: relative;
+  width: 480px; 
+  height: 600px;
+  border-radius: 20px;
+  overflow: hidden;
+  pointer-events: auto !important;
+  background-color: transparent !important; /* Removes the vertical dark walls */
+  box-shadow: none !important; 
+}
+
+/* Clipped Layer for Left Image */
+.left-clip-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  border-radius: 20px;
+  overflow: hidden;
+  pointer-events: none;
+  clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
+  background-color: transparent !important; /* Fully transparent */
+}
+/* Image Base Styles - SEMI-TRANSPARENT FOR STAR VISIBILITY */
+.split-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  border-radius: 16px;
+  opacity: 0.85; /* Allows twinkling stars to show through images */
+   transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+}
+
+.img-main {
+  z-index: 2;
+   opacity: 1 !important;
+}
+
+.img-bg {
+  z-index: 1;
+   opacity: 1;
+  filter: brightness(0.8) contrast(1.1);
+}
+
+/* ==========================================================================
+   NEON TEXT STYLES (NO BACKDROP / 100% TRANSPARENT STARFIELD)
+   ========================================================================== */
+
+
+/* 1. LEFT TEXT (Designer - Warm Pink/Purple Neon Glow) */
+.left-text h1 {
+  color: #ffffff;
+  text-shadow: 
+    0 0 7px rgba(255, 150, 238, 0.6),
+    0 0 15px #e38bd466,
+    0 0 30px rgba(255, 157, 239, 0.2);
+}
+
+/* 1. LEFT TEXT (Designer - Soft Pink Glow) */
+.left-text:hover h1 {
+  color: #ffb3f3; /* Softer pastel/vibrant pink */
+  text-shadow: 
+    0 0 6px rgba(255, 127, 234, 0.6),
+    0 0 12px rgba(255, 156, 238, 0.308); /* Reduced blur layers and opacities */
+}
+
+/* 2. RIGHT TEXT (<coder> - Cyan/Electric Blue Neon Glow) */
+.right-text h1 {
+  color: #b3f7ff;;
+  text-shadow: 
+    0 0 7px rgba(162, 249, 255, 0.374),
+    0 0 15px rgba(132, 247, 255, 0.5),
+    0 0 30px #8ff8ff56;
+}
+
+/* 2. RIGHT TEXT (<coder> - Soft Cyan Glow) */
+.right-text:hover h1 {
+  color: #b3f7ff; /* Softer pastel/vibrant cyan */
+  text-shadow: 
+    0 0 6px rgba(159, 249, 255, 0.674),
+    0 0 12px rgba(145, 248, 255, 0.539); /* Reduced blur layers and opacities */
+}
+
+/* Soft feathering overlay on the image container */
+.image-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  pointer-events: none;
+  z-index: 10;
+  /* Soft dark gradient that dissolves outer edges smoothly into dark space */
+  background: radial-gradient(
+    ellipse at center, 
+    transparent 60%, 
+    rgba(3, 3, 8, 0.4) 85%, 
+    rgba(3, 3, 8, 0.95) 100%
+  );
+}

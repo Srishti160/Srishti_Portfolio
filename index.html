@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Srishti Kumari | Portfolio</title>
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- External CSS -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Include Three.js via CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+
+  <!-- Background Layer: WebGL Canvas -->
+  <div id="webgl-container"></div>
+
+  <!-- Foreground Overlay Layer -->
+  <div class="ui-overlay">
+    
+    <!-- Professional Header Navigation -->
+    <nav class="navbar interactive">
+      <div class="logo">
+        <a href="#">SK<span>.</span></a>
+      </div>
+      
+      <!-- Primary Nav Links -->
+      <ul class="nav-links">
+        <li><a href="#about">ABOUT</a></li>
+        <li><a href="#projects">PROJECTS</a></li>
+        <li><a href="#skills">SKILLS</a></li>
+        <li><a href="#contact">CONTACT</a></li>
+      </ul>
+
+      <!-- Professional Header Social Links -->
+      <div class="header-socials">
+        <a href="https://www.linkedin.com/in/srishti-kumari-psk816/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <i class="fa-brands fa-linkedin-in"></i>
+        </a>
+        <a href="https://github.com/Srishti160" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <i class="fa-brands fa-github"></i>
+        </a>
+        <a href="https://www.behance.net/srishtikumari168" target="_blank" rel="noopener noreferrer" aria-label="Behance">
+          <i class="fa-brands fa-behance"></i>
+        </a>
+      </div>
+    </nav>
+
+    <!-- Split Interactive Center Section -->
+    <main class="split-container interactive" id="splitContainer">
+      
+      <!-- Left Hero Text -->
+      <div class="side-text left-text" id="leftText">
+        <h1>DESIGNER</h1>
+        <p>Product designer specialising in UI design, data visualization & design systems.</p>
+      </div>
+
+      <!-- Center Image Split Area -->
+      <!-- Center Image Split Area -->
+<div class="image-wrapper" id="imageWrapper">
+  <!-- RIGHT SIDE (CODER) -->
+  <!-- 1. Right Background Image (Behind) -->
+  <img src="code_bg.png" alt="Coder Layer 2" class="split-img img-right img-bg" id="rightBgImg">
+  <!-- 2. Right Main Image (Front) -->
+  <img src="code_fg.png" alt="Coder Layer 1" class="split-img img-right img-main" id="rightMainImg">
+
+  <!-- LEFT SIDE (DESIGNER) - Wrapped inside clipped container -->
+  <div class="left-clip-layer" id="leftClipLayer">
+    <!-- 3. Left Background Image (Behind) -->
+    <img src="graphic_bg.png" alt="Designer Layer 2" class="split-img img-left img-bg" id="leftBgImg">
+    <!-- 4. Left Main Image (Front) -->
+    <img src="graphic_Fg.png" alt="Designer Layer 1" class="split-img img-left img-main" id="leftMainImg">
+  </div>
+</div>
+
+      <!-- Right Hero Text -->
+      <div class="side-text right-text" id="rightText">
+        <h1>&lt;CODER&gt;</h1>
+        <p>Data Science Engineer who writes clean, efficient ML pipelines and software.</p>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- External JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
